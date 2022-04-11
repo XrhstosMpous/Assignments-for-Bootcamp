@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses Form</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<style>
+#container{
+    background-color: powderblue;
+}
+.form-control{
+    background-color: black;
+}
+.form-group{
+    background-color: aquamarine;
+}
+
+</style>
+
+<body>
+    <div id="container">
+        <header class="jumbotron text-center">
+            <h1>Courses</h1>
+        </header>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <a href="#" class="navbar-brand">NavBar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="students.html">Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="trainers.html">Trainer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Assignment.html">Assignment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="studentsPerCourse.html">studentsPerCourse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="coursesPerTrainer.html">CoursesPerTrainer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AssignmentperCourse.html">AssignmentperCourse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="  AssignmentsperStudentperCourse.html  ">AssignmentsperStudentperCourse</a>
+                    </li>
+                </ul>
+            </div>
+        </nav> <!-- End of Navigation Bar -->
+
+        <div class="row">
+            <div class="col-lg-5 offset-lg-1 my-5">
+                <p class="bg-primary"><strong>PLease fill the form below:</strong></p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="JAVA" required>
+                        <span class="error_form" id="title_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="stream">Stream</label>
+                        <input type="text" class="form-control" id="stream" name="stream" placeholder="FTJV_14"
+                            required>
+                        <span class="error_form" id="stream_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <input type="text" class="form-control" id="type" name="type" placeholder="full-time" required>
+                        <span class="error_form" id="type_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Start_date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">End_date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ADD</button>
+                </form>
+            </div>
+            <div class="col-lg-5 offset-lg-1 my-5">
+                <p class="bg-primary"><strong>PLease fill the form below:</strong></p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="JAVA">
+                        <span class="error_form" id="title_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="stream">Stream</label>
+                        <input type="text" class="form-control" id="stream" name="stream" placeholder="FTJV_14"
+                            required>
+                        <span class="error_form" id="stream_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <input type="text" class="form-control" id="type" name="type" placeholder="full-time" required>
+                        <span class="error_form" id="type_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Start_date:</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">End_date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                    <span><button type="submit" class="btn btn-primary">EDIT</button> </span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        $(function () {
+
+            $("#title_error").hide();
+            $("#stream_error").hide();
+            $("type_error").hide();
+
+            var error_title = false;
+            var stream = false;
+            var type = false;
+
+            $("#title").focusout(function () {
+                checkTitle();
+            });
+
+            $("#stream").focusout(function () {
+                checkStream();
+            });
+
+            $("#type").focusout(function () {
+                checkType();
+            });
+
+
+
+            function checkTitle() {
+                var patt = /^[a-zA-Z]*$/;
+                var title = $("#title").val();
+                if (patt.test(title) && title !== "") {
+                    $("#title_error").hide();
+                    $("#title").css("border-bottom", "2px solid #34F458");
+                    error_title = false;
+                } else {
+                    $("#title_error").html("Should contain only Characters");
+                    $("#title_error").show();
+                    $("#title").css("border-bottom", "2px solid #F90A0A");
+                    error_title = true;
+                }
+            }
+
+
+
+            function checkStream() {
+                var pattern = /^[a-zA-Z]*$/;
+                var stream = $("#stream").val();
+                if (pattern.test(stream) && stream !== "") {
+                    $("#stream_error").hide();
+                    $("#stream").css("border-bottom", "2px solid #34F458");
+                    stream = false;
+                } else {
+                    $("#stream_error").html("Should start with  Characters");
+                    $("#stream_error").show();
+                    $("#stream").css("border-bottom", "2px solid #F90A0A");
+                    stream = true;
+                }
+            }
+
+            function checkType() {
+
+                var pattern = /^[a-zA-Z]*$/;
+                var type = $("#type").val();
+                if (pattern.test(type) && type !== "") {
+                    $("#type_error").hide();
+                    $("#type").css("border-bottom", "2px solid #34F458");
+                    type = false;
+                } else {
+                    $("#type_error").html("Should be part-time or full-time");
+                    $("#type_error").show();
+                    $("#type").css("border-bottom", "2px solid #F90A0A");
+                    stream = true;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
